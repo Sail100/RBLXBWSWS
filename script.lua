@@ -102,6 +102,29 @@ runcode(function()
 	})
 end)
 
+ runcode(function()
+        local Disabler = {Enabled = false}
+          local Disabler = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+            Name = "DisablerV2",
+            Function = function(callback)
+                if callback then 
+                    task.spawn(function()
+                        repeat
+                            task.wait(0.03)
+                            local item = getItemNear("scythe")
+                            if item and lplr.Character.HandInvItem.Value == item.tool then 
+                                if bedwars.ClientHandler:Get("ScytheDash"):CallServer({direction = Vector3.new(math.huge, math.huge, math.huge)}) then 
+                                    bedwarsStore.grapple = tick() + 1.5
+                                end
+                            end
+                        until (not Disabler.Enabled)
+                    end)
+                end
+            end
+        })
+    end)
+
+		
 runcode(function()
 	local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local Crosshair = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
