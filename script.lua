@@ -16,6 +16,8 @@ local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
 local UIS = game:GetService("UserInputService")
+local Lib = GuiLibrary
+local remove = .RemoveObject
 local SMX = function(tab, argstable)
 	return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateOptionsButton(argstable)
 end
@@ -52,3 +54,5 @@ function checklagback()
 end
 
 infonotify("SWS | SanWare", "has loaded successfully!", 3)
+
+Libremove("XrayOptionsButton")
