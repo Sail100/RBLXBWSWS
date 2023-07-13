@@ -55,3 +55,22 @@ infonotify("SWS | SanWare", "has loaded successfully!", 3)
 
 GuiLibrary.RemoveObject("XrayOptionsButton")
 GuiLibrary.RemoveObject("SwimOptionsButton")
+
+
+local function runcode(func)
+	func()
+end
+
+runcode(function()
+	local NoAnim = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		["Name"] = "NoAnim",
+		["Function"] = function(callback)
+			if callback then
+				game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
+			else
+				game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
+			end
+		end
+	})
+end)
+
